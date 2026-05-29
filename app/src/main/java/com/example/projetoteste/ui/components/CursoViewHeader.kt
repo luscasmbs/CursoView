@@ -91,5 +91,7 @@ fun CursoViewHeader(
 private fun HeaderPreview(){
     ProjetoTesteTheme {
         CursoViewHeader()
+
+
     }
 }
