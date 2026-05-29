@@ -22,6 +22,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ProjetoTeste"
+rootProject.name = "CursoView"
 include(":app")
  

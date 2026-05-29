@@ -37,7 +37,7 @@ fun CursoViewHeader(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(170.dp)
+                .height(200.dp)
                 .background(Color(0xFF1d3557))
 
         ){
@@ -59,10 +59,29 @@ fun CursoViewHeader(
                     modifier = Modifier.padding(start = 12.dp),
                     style = MaterialTheme.typography.labelSmall,
                     color = Color(0xFFa1baca),
-                    fontSize = 25.sp,
+                    fontSize = 13.sp,
 
                 )
             }
+            Text(
+                text = "Cadastro Visual de Cursos",
+                modifier = Modifier
+                    .padding(top = 110.dp)
+                    .padding(start = 12.dp),
+                color = Color(0xFFF4F5F0),
+                style = MaterialTheme.typography.labelSmall,
+                fontSize = 23.sp
+
+            )
+            Text(
+                text = "Monte a apresentação inicial de um curso\ntécnico.",
+                modifier = Modifier
+                    .padding(top = 145.dp)
+                    .padding(start = 12.dp),
+                color = Color(0xFF88a3b7),
+                style = MaterialTheme.typography.labelSmall,
+                fontSize = 13.sp
+            )
         }
     }
 }
