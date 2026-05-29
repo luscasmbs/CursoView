@@ -14,7 +14,9 @@ import androidx.compose.ui.unit.dp
 import com.example.projetoteste.ui.theme.ProjetoTesteTheme
 
 @Composable
-fun CourseFormSection(modifier: Modifier = Modifier){
+fun CourseFormSection(courseName: String,
+                      onCourseNameChange: (String) -> Unit,
+                      modifier: Modifier = Modifier){
     Column(modifier = modifier.fillMaxWidth()) {
         Box(
             modifier = Modifier
@@ -23,7 +25,10 @@ fun CourseFormSection(modifier: Modifier = Modifier){
                 .background(Color(0xFFf5f2ee))
 
         ) {
-            CourseTextField()
+            CourseTextField(
+                value = courseName,
+                onValueChange = onCourseNameChange
+            )
 
         }
     }
@@ -32,6 +37,7 @@ fun CourseFormSection(modifier: Modifier = Modifier){
 @Composable
 private fun FormPreview(){
     ProjetoTesteTheme {
-        CourseFormSection( )
+        CourseFormSection(courseName = "",
+            onCourseNameChange = {})
     }
 }
