@@ -1,2 +1,116 @@
 package com.example.projetoteste.ui.components
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.example.projetoteste.model.CourseData
+import com.example.projetoteste.ui.theme.ProjetoTesteTheme
+
+@Composable
+fun CoursePreviewCard(
+    course: CourseData,
+    modifier: Modifier = Modifier
+) {
+    val completename = course.completename.ifBlank { "Nome completo não informado" }
+    val shortname = course.shortname.ifBlank { "Nome breve não informado" }
+    val type = course.type.ifBlank { "Categoria pendente" }
+    val worktime = course.worktime.ifBlank { "Carga horária pendente" }
+    val shortdescription = course.shortdescription.ifBlank { "Descrição ainda não preenchida" }
+
+    Column(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(top = 20.dp)
+            .padding(horizontal = 16.dp)
+            .background(Color(0xFF0D1B2A), shape = RoundedCornerShape(16.dp))
+            .border(0.5.dp, Color(0xFF7E8897), shape = RoundedCornerShape(16.dp))
+            .padding(horizontal = 12.dp, vertical = 16.dp)
+    ) {
+        Text(
+            text = "Pré-visualização do curso",
+            style = MaterialTheme.typography.labelSmall,
+            color = Color(0xFFF1835E),
+            fontSize = 13.sp,
+            modifier = Modifier.padding(bottom = 12.dp)
+        )
+
+        Text(
+            text = shortname,
+            style = MaterialTheme.typography.titleLarge,
+            fontWeight = FontWeight.Bold,
+            color = Color(0xFFF0EDE8)
+        )
+
+        Text(
+            text = completename,
+            style = MaterialTheme.typography.labelSmall,
+            color = Color(0xFF304C61),
+            modifier = Modifier.padding(top = 2.dp)
+        )
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(20.dp))
+                    .background(Color(0xFF1E3352))
+                    .padding(horizontal = 12.dp, vertical = 4.dp)
+            ) {
+                Text(
+                    text = type,
+                    fontSize = 11.sp,
+                    color = Color(0xFF4A7FA5)
+                )
+            }
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(20.dp))
+                    .background(Color(0xFF1E3352))
+                    .padding(horizontal = 12.dp, vertical = 4.dp)
+            ) {
+                Text(
+                    text = "${worktime}hrs",
+                    fontSize = 11.sp,
+                    color = Color(0xFF4A7FA5)
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        Text(
+            text = shortdescription,
+            style = MaterialTheme.typography.bodySmall,
+            color = Color(0xFF6A8EA0),
+            fontStyle = FontStyle.Italic
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun CoursePreviewCardPreview() {
+    ProjetoTesteTheme {
+        CoursePreviewCard(course = CourseData.examplemodel())
+    }
+}

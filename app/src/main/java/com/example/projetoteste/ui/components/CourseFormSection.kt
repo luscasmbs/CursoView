@@ -28,7 +28,7 @@ fun CourseFormSection(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .fillMaxHeight()
+                // ❌ Remova o fillMaxHeight() — ele engole a tela toda
                 .background(Color(0xFFf8f4f0))
         ) {
             CourseTextField(
@@ -47,13 +47,20 @@ fun CourseFormSection(
 @Composable
 private fun FormPreview() {
     ProjetoTesteTheme {
-        CourseFormSection(
-            course = CourseData.examplemodel(),
-            oncompletename = {},
-            onshortname = {},
-            ontype = {},
-            onworktime = {},
-            onshortdescription = {}
-        )
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(Color(0xFFf8f4f0))
+        ) {
+            CourseFormSection(
+                course = CourseData.examplemodel(),
+                oncompletename = {},
+                onshortname = {},
+                ontype = {},
+                onworktime = {},
+                onshortdescription = {}
+            )
+            CoursePreviewCard(course = CourseData.examplemodel())
+        }
     }
 }

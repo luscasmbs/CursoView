@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.projetoteste.model.CourseData
 import com.example.projetoteste.ui.components.CourseFormSection
+import com.example.projetoteste.ui.components.CoursePreviewCard
 import com.example.projetoteste.ui.components.CursoViewHeader
 import com.example.projetoteste.ui.theme.ProjetoTesteTheme
 
@@ -21,12 +22,17 @@ fun CadastroCursos(modifier: Modifier = Modifier) {
     Column(modifier = modifier.fillMaxSize()) {
         CursoViewHeader()
         CourseFormSection(
+            modifier = Modifier.weight(1f),
             course = course,
             oncompletename = { course = course.copy(completename = it) },
             onshortname = { course = course.copy(shortname = it) },
             ontype = { course = course.copy(type = it) },
             onworktime = { course = course.copy(worktime = it) },
             onshortdescription = { course = course.copy(shortdescription = it) }
+        )
+        CoursePreviewCard(
+            course = course,
+            modifier = Modifier.weight(1f)
         )
     }
 }
@@ -36,5 +42,6 @@ fun CadastroCursos(modifier: Modifier = Modifier) {
 private fun ScreenPreview() {
     ProjetoTesteTheme {
         CadastroCursos()
+
     }
 }

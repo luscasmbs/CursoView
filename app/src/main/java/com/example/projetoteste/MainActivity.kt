@@ -31,5 +31,6 @@ class MainActivity : ComponentActivity() {
 fun GreetingPreview() {
     ProjetoTesteTheme {
         CadastroCursos()
+
     }
 }
