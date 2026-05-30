@@ -7,7 +7,7 @@ Este documento registra a execução sistemática dos testes manuais obrigatóri
 ## 1. Testes de Inicialização, Compilação e Ambiente
 Mapeia a estabilidade básica do ecossistema e a integridade do ciclo de build.
 
-- [ ] **Item 1.1 — Sincronização do Motor Gradle**
+- [x] **Item 1.1 — Sincronização do Motor Gradle**
   * **Cenário de Teste:** Importar o projeto no Android Studio e acionar `Sync Project with Gradle Files`.
   * **Comportamento Esperado:** Sincronização concluída com sucesso, sem falhas de dependências ou incompatibilidade de plugins.
   * **Resultado Real:** ( ) Passou  |  ( ) Falhou
@@ -42,19 +42,19 @@ Mapeia a estabilidade básica do ecossistema e a integridade do ciclo de build.
 ## 2. Interface Visual e Textos Obrigatórios Estritos
 Validação de conformidade textual e presença de componentes para auditoria estrita de UI.
 
-- [ ] **Item 2.1 — Título Principal de Cabeçalho**
+- [x] **Item 2.1 — Título Principal de Cabeçalho**
   * **Cenário de Teste:** Verificar visualmente o topo da hierarquia de componentes na tela principal.
   * **Comportamento Esperado:** Exibição exata e literal da string: `"Cadastro Visual de Cursos"`.
   * **Resultado Real:** ( ) Passou  |  ( ) Falhou
   * **Evidência / Commit:**
 
-- [ ] **Item 2.2 — Subtítulo Informativo**
+- [x] **Item 2.2 — Subtítulo Informativo**
   * **Cenário de Teste:** Verificar visualmente o texto de apoio posicionado logo abaixo do cabeçalho principal.
   * **Comportamento Esperado:** Exibição exata e literal da string: `"Monte a apresentação inicial de um curso técnico."`.
   * **Resultado Real:** ( ) Passou  |  ( ) Falhou
   * **Evidência / Commit:**
 
-- [ ] **Item 2.3 — Rótulos de Entrada do Formulário**
+- [] **Item 2.3 — Rótulos de Entrada do Formulário**
   * **Cenário de Teste:** Analisar as propriedades de rótulo (*label*) dos campos de entrada de texto ativos.
   * **Comportamento Esperado:** Presença explícita e correta das seguintes strings de identificação:
     1. `"Nome completo do curso"`
