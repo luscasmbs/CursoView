@@ -54,7 +54,7 @@ Validação de conformidade textual e presença de componentes para auditoria es
   * **Resultado Real:** ( ) Passou  |  ( ) Falhou
   * **Evidência / Commit:**
 
-- [] **Item 2.3 — Rótulos de Entrada do Formulário**
+- [x] **Item 2.3 — Rótulos de Entrada do Formulário**
   * **Cenário de Teste:** Analisar as propriedades de rótulo (*label*) dos campos de entrada de texto ativos.
   * **Comportamento Esperado:** Presença explícita e correta das seguintes strings de identificação:
     1. `"Nome completo do curso"`
