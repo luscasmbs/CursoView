@@ -61,6 +61,7 @@ private fun FormPreview() {
                 onshortdescription = {}
             )
             CoursePreviewCard(course = CourseData.examplemodel())
+            StatusCard(mensage = "Preencha os dados para gerar a visualização do curso.")
         }
     }
 }
