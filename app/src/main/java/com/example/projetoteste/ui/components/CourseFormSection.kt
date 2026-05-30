@@ -11,33 +11,49 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.projetoteste.model.CourseData
 import com.example.projetoteste.ui.theme.ProjetoTesteTheme
 
 @Composable
-fun CourseFormSection(courseName: String,
-                      onCourseNameChange: (String) -> Unit,
-                      modifier: Modifier = Modifier){
+fun CourseFormSection(
+    course: CourseData,
+    oncompletename: (String) -> Unit,
+    onshortname: (String) -> Unit,
+    ontype: (String) -> Unit,
+    onworktime: (String) -> Unit,
+    onshortdescription: (String) -> Unit,
+    modifier: Modifier = Modifier
+) {
     Column(modifier = modifier.fillMaxWidth()) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .fillMaxHeight()
-                .background(Color(0xFFf5f2ee))
-
+                .background(Color(0xFFf8f4f0))
         ) {
             CourseTextField(
-                value = courseName,
-                onValueChange = onCourseNameChange
+                course = course,
+                oncompletename = oncompletename,
+                onshortname = onshortname,
+                ontype = ontype,
+                onworktime = onworktime,
+                onshortdescription = onshortdescription
             )
-
         }
     }
 }
+
 @Preview
 @Composable
-private fun FormPreview(){
+private fun FormPreview() {
     ProjetoTesteTheme {
-        CourseFormSection(courseName = "",
-            onCourseNameChange = {})
+        CourseFormSection(
+            course = CourseData.examplemodel(),
+            oncompletename = {},
+            onshortname = {},
+            ontype = {},
+            onworktime = {},
+            onshortdescription = {}
+        )
     }
 }

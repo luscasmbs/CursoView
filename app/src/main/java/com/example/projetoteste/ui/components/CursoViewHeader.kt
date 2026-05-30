@@ -38,7 +38,7 @@ fun CursoViewHeader(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(200.dp)
-                .background(Color(0xFF1d3557))
+                .background(Color(0xFF0d1b2a))
 
         ){
             Row(
@@ -58,7 +58,7 @@ fun CursoViewHeader(
                     text = "CURSOVIEW",
                     modifier = Modifier.padding(start = 12.dp),
                     style = MaterialTheme.typography.labelSmall,
-                    color = Color(0xFFa1baca),
+                    color = Color(0xFF5cacd0),
                     fontSize = 13.sp,
 
                 )
@@ -78,7 +78,7 @@ fun CursoViewHeader(
                 modifier = Modifier
                     .padding(top = 145.dp)
                     .padding(start = 12.dp),
-                color = Color(0xFF88a3b7),
+                color = Color(0xFF5cacd0),
                 style = MaterialTheme.typography.labelSmall,
                 fontSize = 13.sp
             )
