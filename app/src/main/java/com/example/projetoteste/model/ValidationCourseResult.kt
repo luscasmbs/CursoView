@@ -3,6 +3,13 @@ package com.example.projetoteste.model
 data class ValidationCourseResult(
     val course: CourseData
 ) {
+    private val emptyFields: Boolean
+        get() = course.completename.isBlank() &&
+            course.shortname.isBlank() &&
+            course.type.isBlank() &&
+            course.worktime.isBlank() &&
+            course.shortdescription.isBlank()
+
     val messages: List<String>
         get() {
             val errors = mutableListOf<String>()
@@ -11,7 +18,9 @@ data class ValidationCourseResult(
                 errors.add("O nome completo deve ter no mínimo 10 caracteres.")
             }
 
-            if (course.shortname.length > 20) {
+            if (course.shortname.isBlank()) {
+                errors.add("O nome breve é obrigatório.")
+            } else if (course.shortname.length > 20) {
                 errors.add("O nome breve deve ter no máximo 20 caracteres.")
             }
 
@@ -19,11 +28,14 @@ data class ValidationCourseResult(
                 errors.add("A categoria é obrigatória.")
             }
 
-            if (course.worktime.toIntOrNull() == null || course.worktime.toIntOrNull()!! <= 0) {
+            val worktime = course.worktime.toIntOrNull()
+            if (worktime == null || worktime <= 0) {
                 errors.add("A carga horária deve ser um número inteiro positivo.")
             }
 
-            if (course.shortdescription.length > 120) {
+            if (course.shortdescription.isBlank()) {
+                errors.add("A descrição curta é obrigatória.")
+            } else if (course.shortdescription.length > 120) {
                 errors.add("A descrição curta deve ter no máximo 120 caracteres.")
             }
 
@@ -35,6 +47,7 @@ data class ValidationCourseResult(
 
     val message: String
         get() = when {
+            emptyFields -> "Preencha os dados para gerar a visualização do curso."
             valid -> "Cadastro visual válido para apresentação."
             messages.size == 1 -> messages.first()
             else -> "Existem múltiplas pendências no cadastro."
