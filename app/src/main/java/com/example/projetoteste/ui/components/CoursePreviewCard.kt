@@ -17,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -33,7 +34,11 @@ fun CoursePreviewCard(
     val completename = course.completename.ifBlank { "Nome completo não informado" }
     val shortname = course.shortname.ifBlank { "Nome breve não informado" }
     val type = course.type.ifBlank { "Categoria pendente" }
-    val worktime = course.worktime.ifBlank { "Carga horária pendente" }
+    val worktime = if (course.worktime.isBlank()) {
+        "Carga horária pendente"
+    } else {
+        "${course.worktime}hrs"
+    }
     val shortdescription = course.shortdescription.ifBlank { "Descrição ainda não preenchida" }
 
     Column(
@@ -69,9 +74,13 @@ fun CoursePreviewCard(
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
             Box(
                 modifier = Modifier
+                    .weight(1f)
                     .clip(RoundedCornerShape(20.dp))
                     .background(Color(0xFF1E3352))
                     .padding(horizontal = 12.dp, vertical = 4.dp)
@@ -79,19 +88,24 @@ fun CoursePreviewCard(
                 Text(
                     text = type,
                     fontSize = 11.sp,
-                    color = Color(0xFF4A7FA5)
+                    color = Color(0xFF4A7FA5),
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
                 )
             }
             Box(
                 modifier = Modifier
+                    .weight(1f)
                     .clip(RoundedCornerShape(20.dp))
                     .background(Color(0xFF1E3352))
                     .padding(horizontal = 12.dp, vertical = 4.dp)
             ) {
                 Text(
-                    text = "${worktime}hrs",
+                    text = worktime,
                     fontSize = 11.sp,
-                    color = Color(0xFF4A7FA5)
+                    color = Color(0xFF4A7FA5),
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
                 )
             }
         }

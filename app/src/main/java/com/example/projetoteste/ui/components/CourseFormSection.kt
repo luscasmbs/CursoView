@@ -28,7 +28,6 @@ fun CourseFormSection(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                // ❌ Remova o fillMaxHeight() — ele engole a tela toda
                 .background(Color(0xFFf8f4f0))
         ) {
             CourseTextField(
@@ -62,6 +61,11 @@ private fun FormPreview() {
             )
             CoursePreviewCard(course = CourseData.examplemodel())
             StatusCard(mensage = "Preencha os dados para gerar a visualização do curso.")
+            FormActions(
+                onClickClear = {},
+                onValidatorClick = {},
+                onLoadExampleClick = {}
+            )
         }
     }
 }
