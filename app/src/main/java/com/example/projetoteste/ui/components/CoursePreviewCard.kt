@@ -1,7 +1,7 @@
 package com.example.projetoteste.ui.components
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -11,15 +11,17 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -41,83 +43,90 @@ fun CoursePreviewCard(
     }
     val shortdescription = course.shortdescription.ifBlank { "Descrição ainda não preenchida" }
 
-    Column(
+    Card(
         modifier = modifier
             .fillMaxWidth()
             .padding(top = 20.dp)
-            .padding(horizontal = 16.dp)
-            .background(Color(0xFF0D1B2A), shape = RoundedCornerShape(16.dp))
-            .border(0.5.dp, Color(0xFF7E8897), shape = RoundedCornerShape(16.dp))
-            .padding(horizontal = 12.dp, vertical = 16.dp)
+            .padding(horizontal = 16.dp),
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = Color(0xFF0D1B2A)
+        ),
+        border = BorderStroke(0.5.dp, Color(0xFF7E8897))
     ) {
-        Text(
-            text = "Pré-visualização do curso",
-            style = MaterialTheme.typography.labelSmall,
-            color = Color(0xFFF1835E),
-            fontSize = 13.sp,
-            modifier = Modifier.padding(bottom = 12.dp)
-        )
-
-        Text(
-            text = shortname,
-            style = MaterialTheme.typography.titleLarge,
-            fontWeight = FontWeight.Bold,
-            color = Color(0xFFF0EDE8)
-        )
-
-        Text(
-            text = completename,
-            style = MaterialTheme.typography.labelSmall,
-            color = Color(0xFF304C61),
-            modifier = Modifier.padding(top = 2.dp)
-        )
-
-        Spacer(modifier = Modifier.height(10.dp))
-
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        Column(
+            modifier = Modifier.padding(horizontal = 12.dp, vertical = 16.dp)
         ) {
-            Box(
-                modifier = Modifier
-                    .weight(1f)
-                    .clip(RoundedCornerShape(20.dp))
-                    .background(Color(0xFF1E3352))
-                    .padding(horizontal = 12.dp, vertical = 4.dp)
+            Text(
+                text = "Pré-visualização do curso",
+                style = MaterialTheme.typography.labelSmall,
+                color = Color(0xFFF1835E),
+                fontSize = 13.sp,
+                modifier = Modifier.padding(bottom = 12.dp)
+            )
+
+            Text(
+                text = shortname,
+                style = MaterialTheme.typography.titleLarge,
+                fontWeight = FontWeight.Bold,
+                color = Color(0xFFF0EDE8)
+            )
+
+            Text(
+                text = completename,
+                style = MaterialTheme.typography.labelSmall,
+                color = Color(0xFF304C61),
+                modifier = Modifier.padding(top = 2.dp)
+            )
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                Text(
-                    text = type,
-                    fontSize = 11.sp,
-                    color = Color(0xFF4A7FA5),
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
+                Box(
+                    modifier = Modifier
+                        .weight(1f)
+                        .clip(RoundedCornerShape(20.dp))
+                        .background(Color(0xFF1E3352))
+                        .padding(horizontal = 12.dp, vertical = 4.dp)
+                ) {
+                    Text(
+                        text = type,
+                        fontSize = 11.sp,
+                        color = Color(0xFF4A7FA5),
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                }
+
+                Box(
+                    modifier = Modifier
+                        .weight(1f)
+                        .clip(RoundedCornerShape(20.dp))
+                        .background(Color(0xFF1E3352))
+                        .padding(horizontal = 12.dp, vertical = 4.dp)
+                ) {
+                    Text(
+                        text = worktime,
+                        fontSize = 11.sp,
+                        color = Color(0xFF4A7FA5),
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                }
             }
-            Box(
-                modifier = Modifier
-                    .weight(1f)
-                    .clip(RoundedCornerShape(20.dp))
-                    .background(Color(0xFF1E3352))
-                    .padding(horizontal = 12.dp, vertical = 4.dp)
-            ) {
-                Text(
-                    text = worktime,
-                    fontSize = 11.sp,
-                    color = Color(0xFF4A7FA5),
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
-            }
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            Text(
+                text = shortdescription,
+                style = MaterialTheme.typography.bodySmall,
+                color = Color(0xFF6A8EA0),
+                fontStyle = FontStyle.Italic
+            )
         }
-
-        Spacer(modifier = Modifier.height(10.dp))
-
-        Text(
-            text = shortdescription,
-            style = MaterialTheme.typography.bodySmall,
-            color = Color(0xFF6A8EA0),
-            fontStyle = FontStyle.Italic
-        )
     }
 }
 

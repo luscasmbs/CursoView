@@ -10,9 +10,9 @@ data class CourseData(
         companion object{
             fun examplemodel(): CourseData{
                 return CourseData(
-                    completename = "Curso Tecnico em Análise e Desenvolvimento de Sistemas",
+                    completename = "Curso Técnico em Análise e Desenvolvimento de Sistemas",
                     shortname = "ADS",
-                    type = "Tecnologia da Informacao",
+                    type = "Tecnologia da Informação",
                     worktime = "1200",
                     shortdescription = "Formação técnica para criar apps e sites."
                 )
